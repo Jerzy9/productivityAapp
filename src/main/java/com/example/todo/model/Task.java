@@ -1,5 +1,9 @@
 package com.example.todo.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.UUID;
 
 public class Task {
@@ -7,7 +11,7 @@ public class Task {
     private final String name;
     private final String text;
 
-    public Task(UUID id, String name, String text) {
+    public Task(@JsonProperty("id") UUID id, @JsonProperty("name") String name, @JsonProperty("text") String text) {
         this.id = id;
         this.name = name;
         this.text = text;

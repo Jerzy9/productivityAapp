@@ -12,7 +12,7 @@ public interface TaskDao {
 
     default int insertTask(Task newTask) {
         UUID id = UUID.randomUUID();
-        return insertTask(new Task(id, newTask.getName(), newTask.getText()));
+        return insertTask(id, newTask);
     }
 
     List<Task> getAllTasks();

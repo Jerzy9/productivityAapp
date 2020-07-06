@@ -1,12 +1,14 @@
 package com.example.todo.dao;
 
 import com.example.todo.model.Task;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Repository("fake")
 public class FakeTaskDaoAccessService implements TaskDao{
 
     private List<Task> allTasks = new ArrayList<>();
@@ -14,7 +16,7 @@ public class FakeTaskDaoAccessService implements TaskDao{
     @Override
     public int insertTask(UUID id, Task newTask) {
         allTasks.add(new Task(id, newTask.getName(), newTask.getText()));
-        return 0;
+        return 1;
     }
 
     @Override
@@ -24,8 +26,7 @@ public class FakeTaskDaoAccessService implements TaskDao{
 
     @Override
     public Optional<Task> selectTaskById(UUID id) {
-        return allTasks.stream().filter(task -> task.getId().equals(id)
-        ).findFirst();
+        return allTasks.stream().filter(task -> task.getId().equals(id)).findFirst();
     }
 
     @Override
