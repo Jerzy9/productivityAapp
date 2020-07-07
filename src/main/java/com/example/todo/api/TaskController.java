@@ -5,6 +5,8 @@ import com.example.todo.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -20,7 +22,7 @@ public class TaskController {
     }
 
     @PostMapping
-    public void addTask(@RequestBody Task task) {
+    public void addTask(@RequestBody @Valid @NotNull Task task) {
         taskService.addTask(task);
     }
     @GetMapping
@@ -32,7 +34,7 @@ public class TaskController {
         return taskService.selectById(id);
     }
     @DeleteMapping("{id}")
-    public void deleteTaks(@PathVariable("id") UUID id) {
+    public void deleteTaks(@PathVariable("id")  UUID id) {
         taskService.deleteTask(id);
     }
 }
