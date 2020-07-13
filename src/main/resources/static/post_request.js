@@ -1,9 +1,13 @@
+var submit_btn = document.getElementById("submit-btn");
+console.log(submit_btn);
+
+
 var taskData = {
     name: "Pierwsze zadanie",
     text: "pierwsze zadanko do zrobienia cyk"
     };
 
-    function sendobject() {
+    function sendObject() {
         $.ajax({
             type: "POST",
             url: "http://localhost:8080/api/v1/task",
@@ -20,3 +24,5 @@ var taskData = {
             }
         });
     }
+
+    submit_btn.addEventListener("click", sendObject);

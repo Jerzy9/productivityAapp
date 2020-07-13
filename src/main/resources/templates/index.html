@@ -11,14 +11,14 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="/js/postrequest.js"></script>
+    
       <!-- <script src="/js/getrequest.js"></script> -->
     
 
     
  </head>
  <body>
-    <input type="button" onclick="sendobject()" value="send"> </input>
+    <input type="button" onclick="sendObject()" value="send"> </input>
    <div class="container">
     <header>
         <p class="header-title">Productivity App</p>
@@ -66,7 +66,7 @@
                 </div>
                 <div class="submit-button-border">
                     <div class="submit-button">
-                        <input type="submit" value="Dodaj">
+                        <input id="submit-btn" type="button" value="Submit">
                     </div>
                 </div>
             </form>
@@ -151,6 +151,7 @@
     </footer>
   </div>
   <script src="scripts.js"></script>
+  <script src="/post_request.js"></script>
  </body>
 </html>
 
