@@ -1,11 +1,4 @@
 var submit_btn = document.getElementById("submit-btn");
-console.log(submit_btn);
-
-
-var taskData = {
-    name: "Pierwsze zadanie",
-    text: "pierwsze zadanko do zrobienia cyk"
-    };
 
     function sendObject() {
         $.ajax({
@@ -25,4 +18,23 @@ var taskData = {
         });
     }
 
-    submit_btn.addEventListener("click", sendObject);
+    submit_btn.addEventListener("click", function() {
+        // Prevent the form from submitting via the browser.
+        event.preventDefault();
+
+        //     name: $("#name-input").val(),
+        //     text: $("#text-area").val()
+        var taskData = {
+            name: document.getElementById("name-input").val,
+            // text: document.getElementById("text-area")
+            };
+        
+        console.log(name);
+        // console.log(text);
+        
+        sendObject();
+
+          
+        
+       
+    });

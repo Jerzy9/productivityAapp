@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
- <head>
-     <title>TODO</title>
+<head>
+    <title>TODO</title>
 
     <meta charset="UTF-8">
     <!-- <meta name="todo app" content="simple productivity app"> -->
@@ -11,15 +11,14 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
-      <!-- <script src="/js/getrequest.js"></script> -->
-    
 
-    
- </head>
- <body>
-    <input type="button" onclick="sendObject()" value="send"> </input>
-   <div class="container">
+    <!-- <script src="/js/getrequest.js"></script> -->
+
+
+
+</head>
+<body>
+<div class="container">
     <header>
         <p class="header-title">Productivity App</p>
     </header>
@@ -40,12 +39,12 @@
         </div>
     </time>
     <main>
-       
-        
+
+
         <!-- task form -->
         <div class="task-form">
             <!-- show and hide -->
-            <div class="add-task"> 
+            <div class="add-task">
                 <button onclick="showAndHide()" class="add-button" type="button">Add task</button>
             </div>
 
@@ -60,7 +59,7 @@
                 <div class="text-border">
                     <div class="text">
                         <div class="text-p">
-                            <textarea placeholder="Type here..." ></textarea>
+                            <textarea id="text-area" placeholder="Type here..." ></textarea>
                         </div>
                     </div>
                 </div>
@@ -74,84 +73,84 @@
 
         <div class="all-tasks">
             <!-- first task -->
-                <div class="task">
-                    <div class="name-border">
-                        <div class="name">
-                            <div class="name-p">
-                                <p > Umyć naczynia </p>
-                            </div>
-                            <div class="remove-task-border" >
-                                <div class="remove-task">
-                                    <img class="bin" src="images/bin.png">
-                                </div>
-                            </div>
+            <div class="task">
+                <div class="name-border">
+                    <div class="name">
+                        <div class="name-p">
+                            <p > Umyć naczynia </p>
                         </div>
-                    </div>
-
-                    <div class="text-border">
-                        <div class="text">
-                             <div class="text-p">
-                                <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est quis beatae, natus explicabo consequuntur vel reiciendis quas, facilis officia id eius doloribus sed nihil. Magnam similique excepturi dolor quod consequatur. </p>
+                        <div class="remove-task-border" >
+                            <div class="remove-task">
+                                <img class="bin" src="images/bin.png">
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- second task -->
-                <div class="task">
-                    <div class="name-border">
-                        <div class="name">
-                            <div class="name-p">
-                                <p > Umyć naczynia </p>
-                            </div>
-                            <div class="remove-task-border" >
-                                <div class="remove-task">
-                                    <img class="bin" src="images/bin.png">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="text-border">
-                        <div class="text">
-
-                             <div class="text-p">
-                                <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est quis beatae, natus explicabo consequuntur vel reiciendis quas, facilis officia id eius doloribus sed nihil. Magnam similique excepturi dolor quod consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- third task -->
-                <div class="task">
-                    <div class="name-border">
-                        <div class="name">
-                            <div class="name-p">
-                                <p > Umyć naczynia </p>
-                            </div>
-                            <div class="remove-task-border" >
-                                <div class="remove-task">
-                                    <img class="bin" src="images/bin.png">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="text-border">
-                        <div class="text">
-
-                             <div class="text-p">
-                                <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. </p>
-                            </div>
+                <div class="text-border">
+                    <div class="text">
+                        <div class="text-p">
+                            <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est quis beatae, natus explicabo consequuntur vel reiciendis quas, facilis officia id eius doloribus sed nihil. Magnam similique excepturi dolor quod consequatur. </p>
                         </div>
                     </div>
                 </div>
             </div>
-        </main>
+            <!-- second task -->
+            <div class="task">
+                <div class="name-border">
+                    <div class="name">
+                        <div class="name-p">
+                            <p > Umyć naczynia </p>
+                        </div>
+                        <div class="remove-task-border" >
+                            <div class="remove-task">
+                                <img class="bin" src="images/bin.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-border">
+                    <div class="text">
+
+                        <div class="text-p">
+                            <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est quis beatae, natus explicabo consequuntur vel reiciendis quas, facilis officia id eius doloribus sed nihil. Magnam similique excepturi dolor quod consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- third task -->
+            <div class="task">
+                <div class="name-border">
+                    <div class="name">
+                        <div class="name-p">
+                            <p > Umyć naczynia </p>
+                        </div>
+                        <div class="remove-task-border" >
+                            <div class="remove-task">
+                                <img class="bin" src="images/bin.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-border">
+                    <div class="text">
+
+                        <div class="text-p">
+                            <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
     <footer>
         <div>Icons made by <a href="https://www.flaticon.com/free-icon/delete_1214428" title="Kiranshastry">Kiranshastry</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
     </footer>
-  </div>
-  <script src="scripts.js"></script>
-  <script src="/post_request.js"></script>
- </body>
+</div>
+<script src="scripts.js"></script>
+<script src="/post_request.js"></script>
+</body>
 </html>
 
