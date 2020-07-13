@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+ <head>
+     <title>TODO</title>
+
+    <meta charset="UTF-8">
+    <meta name="todo app" content="simple productivity app">
+    <link href="/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/js/postrequest.js"></script>
+      <script src="/js/getrequest.js"></script>
+    
+
+    
+ </head>
+ <body>
+   <div class="container">
+    <header>
+        <p class="header-title">Productivity App</p>
+    </header>
+    <!-- timer -->
+    <time>
+        <div class="clock">
+            <div id="hours">00</div>:
+            <div id="minutes">00</div>:
+            <div id="seconds">00</div>
+        </div>
+        <div class="clock" id="day-week-clock">
+            <div id="day-of-the-week">000000</div>
+        </div>
+        <div class="clock">
+            <div id="day">00</div>.
+            <div id="month">00</div>.
+            <div id="year">00</div>
+        </div>
+    </time>
+    <main>
+       
+        
+        <!-- task form -->
+        <div class="task-form">
+            <!-- show and hide -->
+            <div class="add-task"> 
+                <button onclick="showAndHide()" class="add-button" type="button">Add task</button>
+            </div>
+
+            <form id="taskForm" method="POST">
+                <div class="name-border">
+                    <div class="name" >
+                        <div class="name-p">
+                            <input type="text" placeholder="Type here..." id="name-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="text-border">
+                    <div class="text">
+                        <div class="text-p">
+                            <textarea placeholder="Type here..." ></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="submit-button-border">
+                    <div class="submit-button">
+                        <input type="submit" value="Dodaj">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="all-tasks">
+            <!-- first task -->
+                <div class="task">
+                    <div class="name-border">
+                        <div class="name">
+                            <div class="name-p">
+                                <p > Umyć naczynia </p>
+                            </div>
+                            <div class="remove-task-border" >
+                                <div class="remove-task">
+                                    <img class="bin" src="images/bin.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-border">
+                        <div class="text">
+                             <div class="text-p">
+                                <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est quis beatae, natus explicabo consequuntur vel reiciendis quas, facilis officia id eius doloribus sed nihil. Magnam similique excepturi dolor quod consequatur. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- second task -->
+                <div class="task">
+                    <div class="name-border">
+                        <div class="name">
+                            <div class="name-p">
+                                <p > Umyć naczynia </p>
+                            </div>
+                            <div class="remove-task-border" >
+                                <div class="remove-task">
+                                    <img class="bin" src="images/bin.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-border">
+                        <div class="text">
+
+                             <div class="text-p">
+                                <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est quis beatae, natus explicabo consequuntur vel reiciendis quas, facilis officia id eius doloribus sed nihil. Magnam similique excepturi dolor quod consequatur. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- third task -->
+                <div class="task">
+                    <div class="name-border">
+                        <div class="name">
+                            <div class="name-p">
+                                <p > Umyć naczynia </p>
+                            </div>
+                            <div class="remove-task-border" >
+                                <div class="remove-task">
+                                    <img class="bin" src="images/bin.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-border">
+                        <div class="text">
+
+                             <div class="text-p">
+                                <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 style="color:blue">POST-GET AJAX Example</h3>
+  
+        <div>
+            <form class="form-inline" style="margin:20px 20px 20px 20px" id="customerForm">
+            <div class="form-group">
+                <label for="firstname" style="margin-right:5px">FirstName:</label>
+                <input type="text" class="form-control" id="firstname" placeholder="Enter FirstName"/>
+            </div>
+            <div class="form-group">
+                <label for="lastname" style="margin-left:20px; margin-right:5px">LastName:</label>
+                <input type="text" class="form-control" id="lastname" placeholder="Enter LastName"/>
+            </div>
+            <button type="submit" class="btn btn-default" style="margin-left:20px; margin-right:5px">Submit</button>
+            </form>
+        </div>
+        
+        <div class="col-sm-7" id="postResultDiv">
+        </div>
+        
+        <div class="col-sm-7" style="margin:20px 0px 20px 0px">
+            <button id="getAllCustomerId" type="button" class="btn btn-primary">Get All Customers</button>
+            <div id="getResultDiv" style="padding:20px 10px 20px 50px">
+                <ul class="list-group">
+                </ul>
+            </div>
+                        
+                </div>
+            </main>
+    <footer>
+        <div>Icons made by <a href="https://www.flaticon.com/free-icon/delete_1214428" title="Kiranshastry">Kiranshastry</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    </footer>
+  </div>
+  <script src="scripts.js"></script>
+ </body>
+</html>
+
