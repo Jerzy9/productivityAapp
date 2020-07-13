@@ -26,11 +26,11 @@ var submit_btn = document.getElementById("submit-btn");
         //     text: $("#text-area").val()
         var taskData = {
             name: document.getElementById("name-input").val,
-            // text: document.getElementById("text-area")
+            text: document.getElementById("text-area")
             };
         
         console.log(name);
-        // console.log(text);
+        console.log(text);
         
         sendObject();
 
