@@ -1,42 +1,22 @@
-$(document).ready(
-    function() {
+var taskData = {
+    name: "Pierwsze zadanie",
+    text: "pierwsze zadanko do zrobienia cyk"
+    };
 
-        // SUBMIT FORM
-        $("#taskForm").submit(function(event) {
-            // Prevent the form from submitting via the browser.
-            event.preventDefault();
-            ajaxPost();
-        });
-
-        function ajaxPost() {
-
-            // PREPARE FORM DATA
-            var formData = {
-                name : $("#name").val(),
-                text : $("#text").val()
+    function sendobject() {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/api/v1/task",
+            data: JSON.stringify(taskData),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data) {
+                console.log("succes_zaj");
+                alert(data);
+            },
+            failure: function(errMsg) {
+                console.log("failaaa_zaj");
+                alert(errMsg);
             }
-
-            // DO POST
-            $.ajax({
-                type : "POST",
-                contentType : "application/json",
-                url : "api/v1/task",
-                data : JSON.stringify(formData),
-                dataType : 'json',
-                success : function(result) {
-                    if (result.status == "success") {
-                        $("#postResultDiv").html( "Post Successfully! <br>" + "---> Congrats !!" + "</p>");
-                    } else {
-                        $("#postResultDiv").html("<strong>Error</strong>");
-                    }
-                    console.log(result);
-                },
-                error : function(e) {
-                    alert("Error!")
-                    console.log("ERROR: ", e);
-                }
-            });
-
-        }
-
-    })
+        });
+    }
