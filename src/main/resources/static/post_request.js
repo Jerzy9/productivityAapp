@@ -1,6 +1,10 @@
 var submit_btn = document.getElementById("submit-btn");
 
     function sendObject() {
+         var taskData = {
+                    name: "name",
+                    text: "text"
+                    };
         $.ajax({
             type: "POST",
             url: "http://localhost:8080/api/v1/task",
@@ -25,12 +29,12 @@ var submit_btn = document.getElementById("submit-btn");
         //     name: $("#name-input").val(),
         //     text: $("#text-area").val()
         var taskData = {
-            name: document.getElementById("name-input").val,
-            text: document.getElementById("text-area")
+            name: "name",
+            text: "text"
             };
         
-        console.log(name);
-        console.log(text);
+//        console.log(name);
+//        console.log(text);
         
         sendObject();
 
