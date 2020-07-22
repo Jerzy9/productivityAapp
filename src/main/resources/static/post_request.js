@@ -1,12 +1,12 @@
 var submit_btn = document.getElementById("submit-btn");
 
-
-var taskData = {
-    name: "Pierwsze zadanie",
-    text: "pierwsze zadanko do zrobienia cyk"
-    };
-
     function sendObject() {
+
+         const taskData = {
+            name: $("#name-input").val(),
+            text: $("#text-area").val()
+        };
+
         $.ajax({
             type: "POST",
             url: "http://localhost:8080/api/v1/task",
@@ -22,4 +22,17 @@ var taskData = {
         });
     }
 
-    submit_btn.addEventListener("click", sendObject);
+    submit_btn.addEventListener("click", function() {
+        // Prevent the form from submitting via the browser.
+        event.preventDefault();
+
+
+//        console.log(taskData.name);
+//        console.log(text);
+        
+        sendObject();
+
+          
+        
+       
+    });
