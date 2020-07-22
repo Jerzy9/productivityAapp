@@ -1,10 +1,12 @@
 var submit_btn = document.getElementById("submit-btn");
 
     function sendObject() {
-         var taskData = {
-                    name: "name",
-                    text: "text"
-                    };
+
+         const taskData = {
+            name: $("#name-input").val(),
+            text: $("#text-area").val()
+        };
+
         $.ajax({
             type: "POST",
             url: "http://localhost:8080/api/v1/task",
@@ -26,14 +28,8 @@ var submit_btn = document.getElementById("submit-btn");
         // Prevent the form from submitting via the browser.
         event.preventDefault();
 
-        //     name: $("#name-input").val(),
-        //     text: $("#text-area").val()
-        var taskData = {
-            name: "name",
-            text: "text"
-            };
-        
-//        console.log(name);
+
+//        console.log(taskData.name);
 //        console.log(text);
         
         sendObject();
