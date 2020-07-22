@@ -1,5 +1,4 @@
 var submit_btn = document.getElementById("submit-btn");
-console.log(submit_btn);
 
 
 var taskData = {
@@ -15,11 +14,9 @@ var taskData = {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function(data) {
-                console.log("succes_zaj");
                 alert(data);
             },
             failure: function(errMsg) {
-                console.log("failaaa_zaj");
                 alert(errMsg);
             }
         });
