@@ -1,4 +1,5 @@
 var submit_btn = document.getElementById("submit-btn");
+
 // POST Task
 function sendTaskToRestApi() {
 
@@ -22,36 +23,86 @@ function sendTaskToRestApi() {
     });
 }
 
+function getDateFromRestApi() {
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/api/v1/task",
+        contentType: "application/json; charset=utf-8",
+        success: function(data) {
+            //alert(data);
+            console.log("get");
+        },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+    });
+}
+//  Create task-div
+function createTaskDiv() {
+   
+    //<div class="task">
+    let taskDiv = document.createElement('div');
+    taskDiv.setAttribute('class', 'task');
+
+    // NAME
+    //<div class="name-border">
+    let nameBorderDiv = document.createElement('div');
+    nameBorderDiv.setAttribute('class', 'name-border');
+    
+    //<div class="name">
+    let nameDiv = document.createElement('div');
+    nameDiv.setAttribute('class', 'name');
+
+    //<div class="name-p">
+    let namePDiv = document.createElement('div');
+    namePDiv.setAttribute('class', 'name-p');
+
+    //<p > Umyć naczynia </p>
+    let pName = document.createElement('p');
+    pName.textContent = " Umyć naczynia ";
+
+    //TEXT
+    //<div class="text-border">
+    let textBorderDiv = document.createElement('div');
+    textBorderDiv.setAttribute('class', 'text-border');
+
+    //<div class="text">
+    let textDiv = document.createElement('div');
+    textDiv.setAttribute('class', 'text');
+
+    //<div class="name-p">
+    let textPDiv = document.createElement('div');
+    textPDiv.setAttribute('class', 'text-p');
+
+    //<p > Umyć naczynia </p>
+    let pText = document.createElement('p');
+    pText.textContent = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est quis beatae, natus explicabo consequuntur vel reiciendis quas,";
+
+
+    //name
+    namePDiv.appendChild(pName);
+    nameDiv.appendChild(namePDiv);
+    nameBorderDiv.appendChild(nameDiv);
+    taskDiv.appendChild(nameBorderDiv);
+    //text
+    textPDiv.appendChild(pText);
+    textDiv.appendChild(textPDiv);
+    textBorderDiv.appendChild(textDiv);
+    taskDiv.appendChild(textBorderDiv);
+
+    document.getElementById('all-tasks').appendChild(taskDiv);
+
+    
+}
+////GET All Tasks
 submit_btn.addEventListener("click", function() {
     // Prevent the form from submitting via the browser.
     event.preventDefault();
     
     sendTaskToRestApi();
+    //getDateFromRestApi();
+    console.log("lol");
+    createTaskDiv();
 
 });
-
-////GET All Tasks
-//function getDateFromRestApi() {
-//
-//
-//    $.ajax({
-//        type: "GET",
-//        url: "http://localhost:8080/api/v1/task",
-//        contentType: "application/json; charset=utf-8",
-//        success: function(data) {
-//            //alert(data);
-//            console.log("get");
-//        },
-//        failure: function(errMsg) {
-//            alert(errMsg);
-//        }
-//    });
-//}
-
-//submit_btn.addEventListener("click", function() {
-//// Prevent the form from submitting via the browser.
-//event.preventDefault();
-//
-//getDateFromRestApi()
-
-//});
