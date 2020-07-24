@@ -29,9 +29,13 @@ function getDateFromRestApi() {
         type: "GET",
         url: "http://localhost:8080/api/v1/task",
         contentType: "application/json; charset=utf-8",
-        success: function(data) {
-            //alert(data);
-            console.log("get");
+        success: function(result) {
+            // alert(result);
+            console.log(result[0].name);
+            // console.log(result.data.name);
+            result[0].name
+            console.log("succes: ", result);
+           //createTaskDiv(result.data.name + "", result.data.text + "")
         },
         failure: function(errMsg) {
             alert(errMsg);
@@ -101,8 +105,7 @@ submit_btn.addEventListener("click", function() {
     event.preventDefault();
     
     sendTaskToRestApi();
-    //getDateFromRestApi();
-    console.log("lol");
-    createTaskDiv("pierwsze", "opis pierwszego zadania");
+    getDateFromRestApi();
+    // createTaskDiv("pierwsze", "opis pierwszego zadania");
 
 });
