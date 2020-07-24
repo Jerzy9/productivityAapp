@@ -29,9 +29,13 @@ function getDateFromRestApi() {
         type: "GET",
         url: "http://localhost:8080/api/v1/task",
         contentType: "application/json; charset=utf-8",
-        success: function(data) {
-            //alert(data);
-            console.log("get");
+        success: function(result) {
+            // alert(result);
+            console.log(result.data);
+            // console.log(result.data.name);
+            result[0].name
+            console.log("succes: ", result);
+           //createTaskDiv(result.data.name + "", result.data.text + "")
         },
         failure: function(errMsg) {
             alert(errMsg);
@@ -39,7 +43,7 @@ function getDateFromRestApi() {
     });
 }
 //  Create task-div
-function createTaskDiv() {
+function createTaskDiv(name, task) {
    
     //<div class="task">
     let taskDiv = document.createElement('div');
@@ -60,7 +64,7 @@ function createTaskDiv() {
 
     //<p > Umyć naczynia </p>
     let pName = document.createElement('p');
-    pName.textContent = " Umyć naczynia ";
+    pName.textContent = name;
 
     //TEXT
     //<div class="text-border">
@@ -77,7 +81,7 @@ function createTaskDiv() {
 
     //<p > Umyć naczynia </p>
     let pText = document.createElement('p');
-    pText.textContent = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est quis beatae, natus explicabo consequuntur vel reiciendis quas,";
+    pText.textContent = task;
 
 
     //name
@@ -101,8 +105,7 @@ submit_btn.addEventListener("click", function() {
     event.preventDefault();
     
     sendTaskToRestApi();
-    //getDateFromRestApi();
-    console.log("lol");
-    createTaskDiv();
+    getDateFromRestApi();
+    // createTaskDiv("pierwsze", "opis pierwszego zadania");
 
 });
