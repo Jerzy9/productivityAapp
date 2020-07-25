@@ -1,4 +1,6 @@
 var submit_btn = document.getElementById("submit-btn");
+var tasksList = new Array();
+
 
 // POST Task
 function sendTaskToRestApi() {
@@ -30,12 +32,15 @@ function getDateFromRestApi() {
         url: "http://localhost:8080/api/v1/task",
         contentType: "application/json; charset=utf-8",
         success: function(result) {
-            // alert(result);
-            console.log(result[0].name);
-            // console.log(result.data.name);
-            result[0].name
-            console.log("succes: ", result);
-           //createTaskDiv(result.data.name + "", result.data.text + "")
+
+            for(let i = 0; i < result.length; i++) {
+                 let obj = result[i];
+                
+                if(!tasksList.includes(obj)) {
+                    createTaskDiv(obj.name, obj.text)
+                    tasksList.push(obj);
+                }
+             }
         },
         failure: function(errMsg) {
             alert(errMsg);
@@ -97,7 +102,6 @@ function createTaskDiv(name, task) {
 
     document.getElementById('all-tasks').appendChild(taskDiv);
 
-    
 }
 ////GET All Tasks
 submit_btn.addEventListener("click", function() {
