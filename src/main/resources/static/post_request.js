@@ -45,6 +45,23 @@ function getDateFromRestApi() {
         }
     });
 }
+function getLatestTaskFromRestApi() {
+
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/api/v1/task/latest",
+        contentType: "application/json; charset=utf-8",
+        success: function(result) {
+            tasksList.push(result);
+            createTaskDiv(result.name, result.text)
+        
+        },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+    });
+}
+
 //  Create task-div
 function createTaskDiv(name, task) {
    
@@ -108,6 +125,7 @@ submit_btn.addEventListener("click", function() {
     
     sendTaskToRestApi();
 
+    getLatestTaskFromRestApi();
 });
 
 //do on refresh
