@@ -124,7 +124,7 @@ submit_btn.addEventListener("click", function() {
     event.preventDefault();
     
     sendTaskToRestApi();
-
+    
     getLatestTaskFromRestApi();
 });
 
