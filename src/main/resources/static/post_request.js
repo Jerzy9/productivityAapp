@@ -24,7 +24,6 @@ function sendTaskToRestApi() {
         }
     });
 }
-
 function getDateFromRestApi() {
 
     $.ajax({
@@ -36,10 +35,9 @@ function getDateFromRestApi() {
             for(let i = 0; i < result.length; i++) {
                  let obj = result[i];
                 
-                if(!tasksList.includes(obj)) {
                     createTaskDiv(obj.name, obj.text)
                     tasksList.push(obj);
-                }
+                    console.log(tasksList.length);
              }
         },
         failure: function(errMsg) {
@@ -109,7 +107,8 @@ submit_btn.addEventListener("click", function() {
     event.preventDefault();
     
     sendTaskToRestApi();
-    getDateFromRestApi();
-    // createTaskDiv("pierwsze", "opis pierwszego zadania");
 
 });
+
+//do on refresh
+getDateFromRestApi();
