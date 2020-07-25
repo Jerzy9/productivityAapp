@@ -38,4 +38,13 @@ public class FakeTaskDaoAccessService implements TaskDao{
         allTasks.remove(taskToDelete.get());
         return 1;
     }
+
+    @Override
+    public Task getLastTask() {
+        if (!allTasks.isEmpty()) {
+            return allTasks.get(allTasks.size() - 1);
+        }
+        return null;
+    }
+
 }
