@@ -127,7 +127,9 @@ submit_btn.addEventListener("click", async function() {
     event.preventDefault();
     
     sendTaskToRestApi();
-    await sleep(200);
+    // wait 0.4s, to avoid bugs with adding a wrong task, not the latest one
+    // with sleep, everything works great
+    await sleep(400);
     
     getLatestTaskFromRestApi();
 });
