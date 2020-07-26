@@ -1,4 +1,6 @@
 var submit_btn = document.getElementById("submit-btn");
+var tasksList = new Array();
+
 
 // POST Task
 function sendTaskToRestApi() {
@@ -22,24 +24,46 @@ function sendTaskToRestApi() {
         }
     });
 }
-
 function getDateFromRestApi() {
 
     $.ajax({
         type: "GET",
         url: "http://localhost:8080/api/v1/task",
         contentType: "application/json; charset=utf-8",
-        success: function(data) {
-            //alert(data);
-            console.log("get");
+        success: function(result) {
+
+            for(let i = 0; i < result.length; i++) {
+                 let obj = result[i];
+                
+                    createTaskDiv(obj.name, obj.text)
+                    tasksList.push(obj);
+                    console.log(tasksList.length);
+             }
         },
         failure: function(errMsg) {
             alert(errMsg);
         }
     });
 }
+function getLatestTaskFromRestApi() {
+    
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/api/v1/task/latest",
+        contentType: "application/json; charset=utf-8",
+        success: function(result) {
+            tasksList.push(result);
+            createTaskDiv(result.name, result.text)
+        
+        },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+    });
+}
+
 //  Create task-div
-function createTaskDiv() {
+function createTaskDiv(name, task) {
    
     //<div class="task">
     let taskDiv = document.createElement('div');
@@ -60,7 +84,7 @@ function createTaskDiv() {
 
     //<p > Umyć naczynia </p>
     let pName = document.createElement('p');
-    pName.textContent = " Umyć naczynia ";
+    pName.textContent = name;
 
     //TEXT
     //<div class="text-border">
@@ -77,7 +101,7 @@ function createTaskDiv() {
 
     //<p > Umyć naczynia </p>
     let pText = document.createElement('p');
-    pText.textContent = "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est quis beatae, natus explicabo consequuntur vel reiciendis quas,";
+    pText.textContent = task;
 
 
     //name
@@ -93,16 +117,22 @@ function createTaskDiv() {
 
     document.getElementById('all-tasks').appendChild(taskDiv);
 
-    
+}
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 ////GET All Tasks
-submit_btn.addEventListener("click", function() {
+submit_btn.addEventListener("click", async function() {
     // Prevent the form from submitting via the browser.
     event.preventDefault();
     
     sendTaskToRestApi();
-    //getDateFromRestApi();
-    console.log("lol");
-    createTaskDiv();
-
+    // wait 0.4s, to avoid bugs with adding a wrong task, not the latest one
+    // with sleep, everything works great
+    await sleep(400);
+    
+    getLatestTaskFromRestApi();
 });
+
+//do on refresh
+getDateFromRestApi();
