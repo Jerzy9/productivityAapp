@@ -46,7 +46,7 @@ function getDateFromRestApi() {
     });
 }
 function getLatestTaskFromRestApi() {
-
+    
     $.ajax({
         type: "GET",
         url: "http://localhost:8080/api/v1/task/latest",
@@ -118,12 +118,16 @@ function createTaskDiv(name, task) {
     document.getElementById('all-tasks').appendChild(taskDiv);
 
 }
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 ////GET All Tasks
-submit_btn.addEventListener("click", function() {
+submit_btn.addEventListener("click", async function() {
     // Prevent the form from submitting via the browser.
     event.preventDefault();
     
     sendTaskToRestApi();
+    await sleep(200);
     
     getLatestTaskFromRestApi();
 });
