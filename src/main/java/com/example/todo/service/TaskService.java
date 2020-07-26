@@ -34,4 +34,8 @@ public class TaskService {
     public int deleteTask(UUID id) {
         return taskDao.deleteTask(id);
     }
+
+    public Task getLatestTask() {
+        return taskDao.getLastTask();
+    }
 }

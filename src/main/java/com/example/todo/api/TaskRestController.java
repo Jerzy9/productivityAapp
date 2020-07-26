@@ -37,4 +37,8 @@ public class TaskRestController {
     public void deleteTaks(@PathVariable("id")  UUID id) {
         taskService.deleteTask(id);
     }
+    @GetMapping("latest")
+    public Task getLatestTask() {
+        return taskService.getLatestTask();
+    }
 }

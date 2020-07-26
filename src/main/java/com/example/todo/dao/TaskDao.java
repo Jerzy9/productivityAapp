@@ -20,4 +20,6 @@ public interface TaskDao {
     Optional<Task> selectTaskById(UUID id);
 
     int deleteTask(UUID id);
+
+    Task getLastTask();
 }
