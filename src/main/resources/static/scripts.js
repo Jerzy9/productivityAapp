@@ -1,26 +1,26 @@
 
 function time() {
 
-    var hours_div = document.getElementById('hours');
-    var minutes_div = document.getElementById('minutes');
-    var seconds_div = document.getElementById('seconds');
+    let hours_div = document.getElementById('hours');
+    let minutes_div = document.getElementById('minutes');
+    let seconds_div = document.getElementById('seconds');
 
-    var dayOfTheWeek_div = document.getElementById('day-of-the-week');
+    let dayOfTheWeek_div = document.getElementById('day-of-the-week');
 
-    var day_div = document.getElementById('day');
-    var month_div = document.getElementById('month');
-    var year_div = document.getElementById('year');
+    let day_div = document.getElementById('day');
+    let month_div = document.getElementById('month');
+    let year_div = document.getElementById('year');
 
-    var hours = new Date().getHours();
-    var minutes = new Date().getMinutes();
-    var seconds = new Date().getSeconds();
+    let hours = new Date().getHours();
+    let minutes = new Date().getMinutes();
+    let seconds = new Date().getSeconds();
 
-    var dayOfTheWeek = new Date().getDay();
-    var dayOfTheWeekString;
+    let dayOfTheWeek = new Date().getDay();
+    let dayOfTheWeekString;
 
-    var day = new Date().getDate();
-    var month = new Date().getMonth();
-    var year = new Date().getFullYear();
+    let day = new Date().getDate();
+    let month = new Date().getMonth();
+    let year = new Date().getFullYear();
 
     if(dayOfTheWeek == 1) {
         dayOfTheWeekString = "Monday";
@@ -40,6 +40,12 @@ function time() {
 
     if(month < 10) { 
         month = "0" + month;
+    }
+    if(minutes < 10) { 
+        minutes = "0" + minutes;
+    }
+    if(seconds < 10) { 
+        seconds = "0" + seconds;
     }
 
     hours_div.innerHTML = hours

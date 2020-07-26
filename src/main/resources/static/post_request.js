@@ -118,21 +118,24 @@ function createTaskDiv(name, task) {
     document.getElementById('all-tasks').appendChild(taskDiv);
 
 }
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-////GET All Tasks
-submit_btn.addEventListener("click", async function() {
-    // Prevent the form from submitting via the browser.
-    event.preventDefault();
-    
-    sendTaskToRestApi();
-    // wait 0.4s, to avoid bugs with adding a wrong task, not the latest one
-    // with sleep, everything works great
-    await sleep(400);
-    
-    getLatestTaskFromRestApi();
-});
+function clearForm() {
+    let form = document.getElementById('taskForm');
+    form.reset();
+}
+
+async function submitForm() {
+     // Prevent the form from submitting via the browser.
+     sendTaskToRestApi();
+     clearForm();
+     // wait 0.4s, to avoid bugs with adding a wrong task, not the latest one
+     // with sleep, everything works great
+     await sleep(400);
+     getLatestTaskFromRestApi();
+}
 
 //do on refresh
 getDateFromRestApi();
