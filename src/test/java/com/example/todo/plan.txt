@@ -1,0 +1,12 @@
+Automatic test with Selenium:
+
+    Add task:
+        - add task with name and text           re: true
+        - add task with only name               re: true
+        - add task with only text               re: false
+
+    Delete task
+        - delete first task                     re: true
+        - delete last task                      re: true
+        - delete middle tasks                   re: true
+
