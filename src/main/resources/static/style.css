@@ -1,3 +1,6 @@
+html {
+    height: 100%;
+}
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +15,7 @@
 body {
     font-family: 'Lato', sans-serif;
     color: #505050;
+    height: 100%;
 }
 .container {
     /* flex:1; */
@@ -72,6 +76,7 @@ main {
     align-items: center;
     padding-left: 10px;
     padding-right: 10px;
+    height: 100%;
  
 }
 @media only screen and (max-width: 1000px) {
@@ -141,6 +146,7 @@ background-color: gray;
     border: 1px solid #505050;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+    /* background-color: white; */
 }
 .text {
     font-size: 22px;
@@ -159,10 +165,10 @@ background-color: gray;
 }
 .add-task {
     margin-left: 20px;
-    margin-bottom: 3px;
+    /* margin-bottom: 3px; */
     
 }
-.add-button {
+#add-button {
     margin-right: auto;
     margin-right: 20px;
     margin-top: 10px;
@@ -193,6 +199,7 @@ background-color: gray;
     font-family: 'Lato', sans-serif;
     font-size: 22px;
     background-color: transparent;
+    width: 100%;
 }
 .submit-button-border {
     margin-left: auto;
@@ -227,6 +234,9 @@ background-color: gray;
     text-align: center;
     font-family: 'Lato', sans-serif;
     font-size: 16px;
+}
+#task-from-container {
+    display: none;
 }
 
 ::-webkit-input-placeholder {

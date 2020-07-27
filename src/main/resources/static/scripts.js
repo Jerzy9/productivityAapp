@@ -61,7 +61,19 @@ function time() {
 }
 var interval = setInterval(time, 1000);
 
-// function showAndHide() {
-//     ducument.getElementById('add-button').style.display="inline";
-// }
+function showAndHide() {
+    $('#task-from-container').toggle(300);
+    let backgroudColor;
+
+    if($('#add-button').css('background-color') === 'rgb(243, 242, 220)') {
+        backgroudColor = '#EBD300'
+        $('#add-button').html("Add task");
+    } else {
+        backgroudColor = '#F3F2DC'
+        $('#add-button').html("Hide form");
+    }
+    $('#add-button').css({
+        'background-color': backgroudColor
+    })
+}
 

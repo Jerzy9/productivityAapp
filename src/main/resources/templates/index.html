@@ -46,30 +46,31 @@
         <div class="task-form">
             <!-- show and hide -->
             <div class="add-task">
-                <button onclick="showAndHide()" class="add-button" type="button">Add task</button>
+                <button onclick="showAndHide()" id="add-button" type="button">Add task</button>
             </div>
-
-            <form id="taskForm" method="POST">
-                <div class="name-border">
-                    <div class="name" >
-                        <div class="name-p">
-                            <input type="text" placeholder="Type here..." id="name-input">
+            <div id="task-from-container">
+                <form id="taskForm" method="POST">
+                    <div class="name-border">
+                        <div class="name" >
+                            <div class="name-p">
+                                <input type="text" placeholder="Type here..." id="name-input">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="text-border">
-                    <div class="text">
-                        <div class="text-p">
-                            <textarea id="text-area" placeholder="Type here..." ></textarea>
+                    <div class="text-border">
+                        <div class="text">
+                            <div class="text-p">
+                                <textarea id="text-area" placeholder="Type here..." ></textarea>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="submit-button-border">
-                    <div class="submit-button">
-                        <input id="submit-btn" type="button" value="Submit" onclick="submitForm()" >
+                    <div class="submit-button-border">
+                        <div class="submit-button">
+                            <input id="submit-btn" type="button" value="Submit" onclick="submitForm()" >
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
 
         <div id="all-tasks">
