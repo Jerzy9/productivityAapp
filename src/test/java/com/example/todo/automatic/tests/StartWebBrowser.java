@@ -16,11 +16,11 @@ public class StartWebBrowser {
         startAndSearch();
     }
 
-    public void startAndSearch() {
+    public WebDriver startAndSearch() {
         driver.get("http://localhost:8080");
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-
+        return driver;
     }
 
 }
