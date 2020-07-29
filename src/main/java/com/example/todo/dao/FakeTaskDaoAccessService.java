@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository("fake")
-public class FakeTaskDaoAccessService implements TaskDao{
+public class FakeTaskDaoAccessService implements TaskDao {
 
     private List<Task> allTasks = new ArrayList<>();
 
