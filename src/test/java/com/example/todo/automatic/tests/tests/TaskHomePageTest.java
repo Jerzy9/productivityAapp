@@ -1,7 +1,6 @@
 package com.example.todo.automatic.tests.tests;
 
 import com.example.todo.automatic.tests.src.config.SeleniumConfig;
-import com.example.todo.automatic.tests.src.pages.AddTaskPage;
 import com.example.todo.automatic.tests.src.pages.TaskHomePage;
 import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
@@ -20,8 +19,8 @@ public class TaskHomePageTest {
     @Test
     public void StartHomePage() {
 
-        AddTaskPage addTaskPage = new AddTaskPage(config);
-        addTaskPage.clickOnAddTask();
+        TaskHomePage homePage = new TaskHomePage(config);
+        homePage.clickOnAddTask();
 
     }
 
@@ -29,6 +28,7 @@ public class TaskHomePageTest {
     public void addTaskWithNameAndText() {
         TaskHomePage homePage = new TaskHomePage(config);
         homePage.addTask("pierwsze zadanie", "opis");
+        homePage.clickOnAddTask();
 
     }
 }

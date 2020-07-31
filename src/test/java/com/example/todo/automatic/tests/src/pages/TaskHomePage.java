@@ -11,7 +11,7 @@ public class TaskHomePage {
 
     private SeleniumConfig config;
 
-    @FindBy(id = "add-task")
+    @FindBy(css = "#add-button")
     private WebElement showHideBtn;
     @FindBy(id = "name-input")
     private WebElement nameInput;
@@ -43,5 +43,10 @@ public class TaskHomePage {
     public void clickOnSubmit() {
         submitFormBtn.click();
         config.waitDriver();
+    }
+    public void clickOnAddTask() {
+        config.clickElement(showHideBtn);
+        config.waitDriver();
+        PageFactory.initElements(this.config.getDriver(), this);
     }
 }
