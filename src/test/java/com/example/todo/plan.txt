@@ -1,0 +1,14 @@
+Automatic test with Selenium:
+
+    1.Add task:
+        - add task with name and text           re: true
+        - add task with only name               re: true
+        - add task with only text               re: false
+
+    2.Delete task
+        - delete first task                     re: true
+        - delete last task                      re: true
+        - delete middle tasks                   re: true
+
+    3.Repeat "1."
+
