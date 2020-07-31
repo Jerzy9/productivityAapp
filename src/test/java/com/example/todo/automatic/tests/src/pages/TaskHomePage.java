@@ -1,8 +1,6 @@
 package com.example.todo.automatic.tests.src.pages;
 
 import com.example.todo.automatic.tests.src.config.SeleniumConfig;
-import com.example.todo.model.Task;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -20,6 +18,14 @@ public class TaskHomePage {
     @FindBy(id = "submit-btn")
     private WebElement submitFormBtn;
 
+    @FindBy(xpath = "//*[@id=\"all-tasks\"]/div/div[1]/div/div/p")
+    private WebElement latestTaskName;
+    @FindBy(xpath = "//*[@id=\"all-tasks\"]/div/div[2]/div/div/p")
+    private WebElement latestTaskText;
+
+
+
+
     public TaskHomePage(SeleniumConfig config) {
         this.config = config;
 
@@ -27,18 +33,35 @@ public class TaskHomePage {
         config.waitDriver();
     }
 
+    public String getLatestTaskName() {
+        return latestTaskName.getText();
+    }
+    public String getLatestTaskText() {
+        return latestTaskText.getText();
+    }
+
+    public boolean isFormShown() {
+        return showHideBtn.getText().equals("Hide form");
+    }
+
     public void addTask(String name, String text) {
         fillNameInput(name);
         fillTextInput(text);
         clickOnSubmit();
+        refreshData();
+
     }
     public void fillNameInput(String name) {
-        nameInput.sendKeys(name);
-        config.waitDriver();
+        if(name != null && !name.equals("")) {
+            nameInput.sendKeys(name);
+            config.waitDriver();
+        }
     }
     public void fillTextInput(String text) {
-        textInput.sendKeys(text);
-        config.waitDriver();
+        if(text != null && !text.equals("")) {
+            textInput.sendKeys(text);
+            config.waitDriver();
+        }
     }
     public void clickOnSubmit() {
         submitFormBtn.click();
@@ -47,6 +70,11 @@ public class TaskHomePage {
     public void clickOnAddTask() {
         config.clickElement(showHideBtn);
         config.waitDriver();
-        PageFactory.initElements(this.config.getDriver(), this);
+        refreshData();
     }
+    public void refreshData() {
+        PageFactory.initElements(this.config.getDriver(), this);
+        config.waitDriver();
+    }
+
 }

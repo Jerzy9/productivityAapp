@@ -44,7 +44,6 @@ public class SeleniumConfig {
     public String randomStringGenerator(int length) {
         StringBuilder randomString = new StringBuilder();
 
-        System.out.println(ALPHA_NUMERIC_STRING.length());
         for (int i = 0; i < length; i++) {
             randomString.append(ALPHA_NUMERIC_STRING.charAt(r.nextInt(ALPHA_NUMERIC_STRING.length())));
         }
