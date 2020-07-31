@@ -1,31 +1,27 @@
 package com.example.todo.automatic.tests.src.pages;
 
 import com.example.todo.automatic.tests.src.config.SeleniumConfig;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
 
 public class AddTaskPage {
 
     private SeleniumConfig config;
-    private WebDriver driver;
-
-    private final String homePageUrl = "http://localhost:8080";
 
     @FindBy(css = "#add-button")
     private WebElement showHideBtn;
 
-    public AddTaskPage() {
-        config = new SeleniumConfig();
-        driver = config.getDriver();
-        config.navigateTo(homePageUrl);
+    public AddTaskPage(SeleniumConfig config) {
+        this.config = config;
+        PageFactory.initElements(this.config.getDriver(), this);
+        config.waitDriver();
     }
 
-    public TaskHomePage clickOnAddTask() {
-//        showHideBtn = driver.findElement(By.cssSelector("#add-button"));
+    public void clickOnAddTask() {
         config.clickElement(showHideBtn);
         config.waitDriver();
-        return new TaskHomePage(driver, config);
     }
+
 }

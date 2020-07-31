@@ -5,16 +5,14 @@ import com.example.todo.model.Task;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class TaskHomePage {
 
     private SeleniumConfig config;
-    private WebDriver driver;
 
-    private final String homePageUrl = "http://localhost:8080";
-
-//    @FindBy(id = "add-task")
-//    private WebElement showHideBtn;
+    @FindBy(id = "add-task")
+    private WebElement showHideBtn;
     @FindBy(id = "name-input")
     private WebElement nameInput;
     @FindBy(id = "text-area")
@@ -22,12 +20,12 @@ public class TaskHomePage {
     @FindBy(id = "submit-btn")
     private WebElement submitFormBtn;
 
-    public TaskHomePage(WebDriver driver, SeleniumConfig config) {
-        this.driver = driver;
+    public TaskHomePage(SeleniumConfig config) {
         this.config = config;
 
+        PageFactory.initElements(this.config.getDriver(), this);
+        config.waitDriver();
     }
-
 
     public void addTask(String name, String text) {
         fillNameInput(name);
@@ -46,6 +44,4 @@ public class TaskHomePage {
         submitFormBtn.click();
         config.waitDriver();
     }
-
-
 }
