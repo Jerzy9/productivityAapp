@@ -3,26 +3,32 @@ var tasksList = new Array();
 
 
 // POST Task
-function sendTaskToRestApi() {
+async function sendTaskToRestApi() {
 
     const taskData = {
         name: $("#name-input").val(),
         text: $("#text-area").val()
     };
+    console.log(taskData.name.length)
+    if(taskData.name.length > 0) {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/api/v1/task",
+            data: JSON.stringify(taskData),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data) {
+                alert(data);
+            },
+            failure: function(errMsg) {
+                alert(errMsg);
+            }
+        });
+        //get only when it has been sent
+        getLastAndWait()
+    }
 
-    $.ajax({
-        type: "POST",
-        url: "http://localhost:8080/api/v1/task",
-        data: JSON.stringify(taskData),
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function(data) {
-            alert(data);
-        },
-        failure: function(errMsg) {
-            alert(errMsg);
-        }
-    });
+   
 }
 function getDateFromRestApi() {
 
@@ -52,9 +58,10 @@ function getLatestTaskFromRestApi() {
         url: "http://localhost:8080/api/v1/task/latest",
         contentType: "application/json; charset=utf-8",
         success: function(result) {
-            tasksList.push(result);
-            createTaskDiv(result.name, result.text)
-        
+            if(result != null) {
+                tasksList.push(result);
+                createTaskDiv(result.name, result.text);
+            }
         },
         failure: function(errMsg) {
             alert(errMsg);
@@ -115,7 +122,7 @@ function createTaskDiv(name, task) {
     textBorderDiv.appendChild(textDiv);
     taskDiv.appendChild(textBorderDiv);
 
-    document.getElementById('all-tasks').appendChild(taskDiv);
+    document.getElementById('all-tasks').prepend(taskDiv);
 
 }
 
@@ -126,15 +133,18 @@ function clearForm() {
     let form = document.getElementById('taskForm');
     form.reset();
 }
+async function getLastAndWait() {
+    // wait 0.4s, to avoid bugs with adding a wrong task, not the latest one
+    // with sleep, everything works great
+    await sleep(400);
+    getLatestTaskFromRestApi();
+}
 
 async function submitForm() {
      // Prevent the form from submitting via the browser.
      sendTaskToRestApi();
      clearForm();
-     // wait 0.4s, to avoid bugs with adding a wrong task, not the latest one
-     // with sleep, everything works great
-     await sleep(400);
-     getLatestTaskFromRestApi();
+     
 }
 
 //do on refresh
