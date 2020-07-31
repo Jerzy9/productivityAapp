@@ -64,16 +64,29 @@ var interval = setInterval(time, 1000);
 function showAndHide() {
     $('#task-from-container').toggle(300);
     let backgroudColor;
+    let backgroudColorHover;
 
     if($('#add-button').css('background-color') === 'rgb(243, 242, 220)') {
-        backgroudColor = '#EBD300'
+        backgroudColor = '#EBD300';
+        backgroudColorHover = '#b3a100';
         $('#add-button').html("Add task");
+        
     } else {
-        backgroudColor = '#F3F2DC'
+        backgroudColor = '#F3F2DC';
+        backgroudColorHover = '#dedba0';
         $('#add-button').html("Hide form");
     }
+
     $('#add-button').css({
         'background-color': backgroudColor
-    })
-}
+    });
+    //hover color change
+    // $("#add-button").hover(
+    //     function() {
+    //         $(this).css('background-color', backgroudColorHover);
+    //     }
+    // );
 
+
+    
+}

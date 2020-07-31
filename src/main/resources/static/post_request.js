@@ -9,7 +9,7 @@ async function sendTaskToRestApi() {
         name: $("#name-input").val(),
         text: $("#text-area").val()
     };
-    console.log(taskData.name.length)
+
     if(taskData.name.length > 0) {
         $.ajax({
             type: "POST",
@@ -26,9 +26,8 @@ async function sendTaskToRestApi() {
         });
         //get only when it has been sent
         getLastAndWait()
-    }
+    } 
 
-   
 }
 function getDateFromRestApi() {
 
