@@ -40,7 +40,7 @@ function getDateFromRestApi() {
             for(let i = 0; i < result.length; i++) {
                  let obj = result[i];
                 
-                    createTaskDiv(obj.name, obj.text)
+                    createTaskDivWithText(obj.name, obj.text)
                     tasksList.push(obj);
                     console.log(tasksList.length);
              }
@@ -59,7 +59,7 @@ function getLatestTaskFromRestApi() {
         success: function(result) {
             if(result != null) {
                 tasksList.push(result);
-                createTaskDiv(result.name, result.text);
+                createTaskDiv_WithText(result.name, result.text);
             }
         },
         failure: function(errMsg) {
@@ -69,7 +69,7 @@ function getLatestTaskFromRestApi() {
 }
 
 //  Create task-div
-function createTaskDiv(name, task) {
+function createTaskDiv_WithText(name, task) {
    
     //<div class="task">
     let taskDiv = document.createElement('div');
@@ -83,6 +83,19 @@ function createTaskDiv(name, task) {
     //<div class="name">
     let nameDiv = document.createElement('div');
     nameDiv.setAttribute('class', 'name');
+
+    //<div class="remove-task-border">
+    let removeTaskBorderDiv = document.createElement('div');
+    removeTaskBorderDiv.setAttribute('class', 'remove-task-border');
+
+    //<div class="remove-task">
+    let removeTaskDiv = document.createElement('div');
+    removeTaskDiv.setAttribute('class', 'remove-task');
+
+    //<img src="/images/bin.png">
+    let binImg = document.createElement('img');
+    binImg.setAttribute('src', '/images/bin.png');
+    binImg.setAttribute('class', 'bin')
 
     //<div class="name-p">
     let namePDiv = document.createElement('div');
@@ -101,7 +114,7 @@ function createTaskDiv(name, task) {
     let textDiv = document.createElement('div');
     textDiv.setAttribute('class', 'text');
 
-    //<div class="name-p">
+    //<div class="text-p">
     let textPDiv = document.createElement('div');
     textPDiv.setAttribute('class', 'text-p');
 
@@ -113,6 +126,11 @@ function createTaskDiv(name, task) {
     //name
     namePDiv.appendChild(pName);
     nameDiv.appendChild(namePDiv);
+   
+    //removeTaskDiv.appendChild(binImg);
+    removeTaskBorderDiv.appendChild(removeTaskDiv);
+    nameDiv.appendChild(removeTaskBorderDiv);
+
     nameBorderDiv.appendChild(nameDiv);
     taskDiv.appendChild(nameBorderDiv);
     //text
@@ -122,6 +140,10 @@ function createTaskDiv(name, task) {
     taskDiv.appendChild(textBorderDiv);
 
     document.getElementById('all-tasks').prepend(taskDiv);
+
+}
+
+function createTaskDiv() {
 
 }
 

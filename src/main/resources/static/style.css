@@ -147,14 +147,23 @@ main {
 .remove-task-border {
    
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .remove-task {
     padding-left: 10px;
     padding-right: 10px;
     margin-right: 20px;
+    background: url("images/binSmall.png") no-repeat;
+    width: 22px;
+    height: 22px;
 }
-.remove-task :hover {
-background-color: gray;
+.remove-task:hover {
+    background: url("images/binSmallHover.png") no-repeat;
+}
+.bin {
+    width: 20px;
 }
 .text-border {
     border: 1px solid #505050;
@@ -173,9 +182,6 @@ background-color: gray;
     margin-bottom: 10px;
     padding-bottom: 10px;
     text-align: justify;
-}
-.bin {
-    width: 20px;
 }
 .add-task {
     margin-left: 20px;
