@@ -151,7 +151,10 @@ main {
 .name-p {
     margin-left:20px;
 }
-
+.name .name-p input{
+    font-size: 30px;
+    background-color: transparent;
+}
 
 /***** REMOVE TASK - bin *****/
 .remove-task-border {
@@ -197,10 +200,17 @@ main {
     padding-bottom: 10px;
     text-align: justify;
 }
+.text-p textarea{
+    font-family: 'Lato', sans-serif;
+    font-size: 22px;
+    background-color: transparent;
+    width: 100%;
+}
+
+
+/***** ADD/HIDE BUTTON *****/
 .add-task {
-    margin-left: 20px;
-    /* margin-bottom: 3px; */
-    
+    margin-left: 20px;  
 }
 #add-button {
     margin-right: auto;
@@ -220,6 +230,9 @@ main {
 #add-button:hover {
     background-color: #b3a100;
 }
+
+
+/***** FORM *****/
 .task-form {
     width: 700px;
     margin-left: 30px;
@@ -228,16 +241,8 @@ main {
     justify-content: center;
 
 }
-.name .name-p input{
-    font-size: 30px;
-    background-color: transparent;
-}
-.text-p textarea{
-    font-family: 'Lato', sans-serif;
-    font-size: 22px;
-    background-color: transparent;
-    width: 100%;
-}
+
+/** submit button **/
 .submit-button-border {
     margin-left: auto;
     margin-right: 20px;
@@ -264,8 +269,6 @@ main {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    
-    
 }
 .submit-button input {
     background-color: transparent;
@@ -298,6 +301,8 @@ main {
         width: 100%;
     }
 }
+
+/***** FOTER *****/
 footer {
     display: flex;
     justify-self: flex-end;
