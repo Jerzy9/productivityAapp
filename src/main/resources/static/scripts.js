@@ -65,11 +65,15 @@ function showAndHide() {
     $('#task-from-container').toggle(300);
     let backgroudColor;
     let backgroudColorHover;
+    let addButton_div = document.getElementById('add-button');
 
     if($('#add-button').css('background-color') === 'rgb(243, 242, 220)') {
         backgroudColor = '#EBD300';
         backgroudColorHover = '#b3a100';
         $('#add-button').html("Add task");
+        //dodaj 2 klasy i hovery do nich w css i zmieniaj miedzy nimi
+        addButton_div.setAttribute();
+        
         
     } else {
         backgroudColor = '#F3F2DC';
