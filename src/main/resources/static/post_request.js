@@ -217,10 +217,8 @@ async function getLastAndWait() {
 async function submitForm() {
      // Prevent the form from submitting via the browser.
      sendTaskToRestApi();
-     clearForm();
-     
+     clearForm();  
 }
 
-//do on refresh
+/***** DOES EVERY REFRESH *****/
 getDateFromRestApi();
-//
