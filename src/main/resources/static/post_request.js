@@ -39,10 +39,13 @@ function getDateFromRestApi() {
 
             for(let i = 0; i < result.length; i++) {
                  let obj = result[i];
-                
-                    createTaskDivWithText(obj.name, obj.text)
+                 if(obj.text.length > 0) {
+                    createTaskDiv_WithText(obj.name, obj.text);
+                } else {
+                    createTaskDiv(result.name);
+                }
+                console.log(obj.id);
                     tasksList.push(obj);
-                    console.log(tasksList.length);
              }
         },
         failure: function(errMsg) {
@@ -61,10 +64,8 @@ function getLatestTaskFromRestApi() {
                 tasksList.push(result);
                 if(result.text.length > 0) {
                     createTaskDiv_WithText(result.name, result.text);
-                    console.log("null");
                 } else {
                     createTaskDiv(result.name);
-                    console.log(result.text.length);
                 }
             }
         },
