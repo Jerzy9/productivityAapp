@@ -61,8 +61,8 @@ public class TaskHomePageTest {
         } catch (InterruptedException ex) {
             ex.fillInStackTrace();
         }
-        System.out.println(homePage.getLatestTaskName());
+
         assertEquals(homePage.getLatestTaskName(), name);
-        assertEquals(homePage.getLatestTaskText(), "<>");
+        assertEquals(homePage.getLatestTaskText(), "");
     }
 }

@@ -1,6 +1,15 @@
 html {
-    height: 100%;
+    min-height: 100%;
+    flex-grow: 1;
+    flex-basis: 100%;
+    min-height: 100vh;
+    height: auto;
 }
+/* @media only screen and (max-height:100%) {
+    html {
+        height: null;
+    }
+} */
 * {
     margin: 0;
     padding: 0;
@@ -15,7 +24,10 @@ html {
 body {
     font-family: 'Lato', sans-serif;
     color: #505050;
-    height: 100%;
+    /* height: 100%; */
+    min-height: 100%;
+    flex-grow: 1;
+    flex-basis: 100%;
 }
 .container {
     /* flex:1; */
@@ -24,14 +36,18 @@ body {
     flex-direction: column;
     align-items: center;
     /* //justify-self: center; */
-    height: 100%;
-   
+    /* height: 100%; */
+    flex-grow: 1;
+    flex-basis: 100%;
+    min-height: 90vh;
+    height: auto;
 }
 header {
     font-size: 40px;
     background-color: #EBD300;
     width: 100%;
-    height: 120px;
+    min-height: 12vh;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,6 +67,9 @@ time {
     flex-wrap: wrap;
     background-color:#F3F2DC;
     text-align: center;
+    min-height: 8vh;
+    height:auto;
+
     
 }
 time > div {
@@ -76,8 +95,9 @@ main {
     align-items: center;
     padding-left: 10px;
     padding-right: 10px;
-    height: 100%;
- 
+    /* height: 100%; */
+    min-height: 70vh;
+    height: auto; 
 }
 @media only screen and (max-width: 1000px) {
 
@@ -109,6 +129,20 @@ main {
     
     margin-bottom: 50px;
 }
+
+/***** NAME *****/
+.name-border {
+    background-color: #EBD300;
+    border: 1px solid #505050;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom: none;
+}
+.name-border-noText {
+    background-color: #EBD300;
+    border: 1px solid #505050;
+    border-radius: 30px;
+}
 .name {
     font-size: 30px;
    
@@ -120,34 +154,49 @@ main {
     margin-top: 10px;
     
 }
-.name-border {
-    background-color: #EBD300;
-    border: 1px solid #505050;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border-bottom: none;
-}
 .name-p {
     margin-left:20px;
+    margin-right:20px;
+    width: 100%;
 }
+.name .name-p input{
+    font-size: 30px;
+    background-color: transparent;
+    width: 100%;
+}
+
+/***** REMOVE TASK - bin *****/
 .remove-task-border {
    
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .remove-task {
     padding-left: 10px;
     padding-right: 10px;
     margin-right: 20px;
+    background: url("images/binSmall.png") no-repeat;
+    width: 22px;
+    height: 22px;
 }
-.remove-task :hover {
-background-color: gray;
+.remove-task:hover {
+    background: url("images/binSmallHover.png") no-repeat;
 }
+.bin {
+    width: 20px;
+}
+
+
+/***** TEXT *****/
 .text-border {
     border: 1px solid #505050;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     /* background-color: white; */
 }
+
 .text {
     font-size: 22px;
    
@@ -160,13 +209,17 @@ background-color: gray;
     padding-bottom: 10px;
     text-align: justify;
 }
-.bin {
-    width: 20px;
+.text-p textarea{
+    font-family: 'Lato', sans-serif;
+    font-size: 22px;
+    background-color: transparent;
+    width: 100%;
 }
+
+
+/***** ADD/HIDE BUTTON *****/
 .add-task {
-    margin-left: 20px;
-    /* margin-bottom: 3px; */
-    
+    margin-left: 20px;  
 }
 #add-button {
     margin-right: auto;
@@ -183,6 +236,12 @@ background-color: gray;
     border-radius: 10px;
     font-size: 16px;
 }
+#add-button:hover {
+    background-color: #b3a100;
+}
+
+
+/***** FORM *****/
 .task-form {
     width: 700px;
     margin-left: 30px;
@@ -191,21 +250,13 @@ background-color: gray;
     justify-content: center;
 
 }
-.name .name-p input{
-    font-size: 30px;
-    background-color: transparent;
-}
-.text-p textarea{
-    font-family: 'Lato', sans-serif;
-    font-size: 22px;
-    background-color: transparent;
-    width: 100%;
-}
+
+/** submit button **/
 .submit-button-border {
     margin-left: auto;
     margin-right: 20px;
     margin-top: 10px;
-    width: 100px;
+    width: 96px;
     display: flex;
     flex-direction: row;
     justify-items: end;
@@ -214,7 +265,9 @@ background-color: gray;
     justify-content: center;
     border: 1px solid #505050;
     border-radius: 10px;
- 
+}
+.submit-button-border:active {
+    border: 3px solid #505050;
 }
 .submit-button-border:hover, .add-button:hover {
     background-color: #b4a202;
@@ -225,8 +278,6 @@ background-color: gray;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    
-    
 }
 .submit-button input {
     background-color: transparent;
@@ -259,6 +310,8 @@ background-color: gray;
         width: 100%;
     }
 }
+
+/***** FOTER *****/
 footer {
     display: flex;
     justify-self: flex-end;

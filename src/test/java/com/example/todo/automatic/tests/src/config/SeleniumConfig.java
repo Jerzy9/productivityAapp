@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class SeleniumConfig {
 
     private final Random r = new Random();
-    private final String ALPHA_NUMERIC_STRING = " abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789 ";
+    private final String ALPHA_NUMERIC_STRING = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ";
     private WebDriver driver;
     private final String pageUrl = "http://localhost:8080";
 
