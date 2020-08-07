@@ -44,7 +44,6 @@ function getDateFromRestApi() {
                 } else {
                     createTaskDiv(result.name);
                 }
-                console.log(obj.id);
                     tasksList.push(obj);
              }
         },
