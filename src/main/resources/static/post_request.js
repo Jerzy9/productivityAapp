@@ -97,9 +97,6 @@ function createTaskDiv_WithText(name, task, id) {
     //<div class="remove-task">
     let removeTaskDiv = document.createElement('button');
     removeTaskDiv.setAttribute('class', 'remove-task');
-    let deleteStringWithId = 'deleteTask('+id + ')';
-    removeTaskDiv.setAttribute('onclick', deleteStringWithId);
-    
     
     //<img src="/images/bin.png">
     let binImg = document.createElement('img');
@@ -131,6 +128,10 @@ function createTaskDiv_WithText(name, task, id) {
     let pText = document.createElement('p');
     pText.textContent = task;
 
+    //delelte listener
+    removeTaskDiv.addEventListener("click", function() {
+        deleteTask(id, taskDiv);
+    }, false);
 
     //name
     namePDiv.appendChild(pName);
@@ -202,9 +203,25 @@ function createTaskDiv(name) {
     document.getElementById('all-tasks').prepend(taskDiv);
 
 }
-function deleteTask(id) {
-    console.log("delete massg");
-    console.log(id);
+async function deleteTask(id, taskDiv) {
+    $.ajax({
+        type: "DELETE",
+        url: "http://localhost:8080/api/v1/task/" + id,
+        contentType: "application/json; charset=utf-8",
+        success: function(result) {
+            //toggle div
+            $(taskDiv).toggle(200);
+            //delete form list
+            for(i = 0; i < tasksList.length; i++) {
+                if(tasksList[i].id === id) {
+                   tasksList.splice(i, 1);
+                }
+            }
+        },
+        failure: function(errMsg) {
+            alert(errMsg);
+        }
+    });
 }
 
 function sleep(ms) {
