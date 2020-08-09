@@ -62,7 +62,7 @@ function getLatestTaskFromRestApi() {
             if(result != null) {
                 tasksList.push(result);
                 if(result.text.length > 0) {
-                    createTaskDiv_WithText(result.name, result.text);
+                    createTaskDiv_WithText(result.name, result.text, result.id);
                 } else {
                     createTaskDiv(result.name);
                 }
@@ -75,7 +75,7 @@ function getLatestTaskFromRestApi() {
 }
 
 //  Create task-div
-function createTaskDiv_WithText(name, task) {
+function createTaskDiv_WithText(name, task, id) {
    
     //<div class="task">
     let taskDiv = document.createElement('div');
@@ -95,13 +95,16 @@ function createTaskDiv_WithText(name, task) {
     removeTaskBorderDiv.setAttribute('class', 'remove-task-border');
 
     //<div class="remove-task">
-    let removeTaskDiv = document.createElement('div');
+    let removeTaskDiv = document.createElement('button');
     removeTaskDiv.setAttribute('class', 'remove-task');
-
+    let deleteStringWithId = 'deleteTask('+id + ')';
+    removeTaskDiv.setAttribute('onclick', deleteStringWithId);
+    
+    
     //<img src="/images/bin.png">
     let binImg = document.createElement('img');
     binImg.setAttribute('src', '/images/bin.png');
-    binImg.setAttribute('class', 'bin')
+    binImg.setAttribute('class', 'bin');
 
     //<div class="name-p">
     let namePDiv = document.createElement('div');
@@ -198,6 +201,10 @@ function createTaskDiv(name) {
 
     document.getElementById('all-tasks').prepend(taskDiv);
 
+}
+function deleteTask(id) {
+    console.log("delete massg");
+    console.log(id);
 }
 
 function sleep(ms) {
