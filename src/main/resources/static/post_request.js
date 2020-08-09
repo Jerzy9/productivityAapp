@@ -35,16 +35,16 @@ function getDateFromRestApi() {
         type: "GET",
         url: "http://localhost:8080/api/v1/task",
         contentType: "application/json; charset=utf-8",
-        success: function(result) {
+        success: function(obj) {
 
-            for(let i = 0; i < result.length; i++) {
-                 let obj = result[i];
-                 if(obj.text.length > 0) {
-                    createTaskDiv_WithText(obj.name, obj.text);
+            for(let i = 0; i < obj.length; i++) {
+                 let result = obj[i];
+                 if(result.text.length > 0) {
+                    createTaskDiv_WithText(result.name, result.text, result.id);
                 } else {
-                    createTaskDiv(obj.name);
+                    createTaskDiv(result.name, result.id);
                 }
-                    tasksList.push(obj);
+                    tasksList.push(result);
              }
         },
         failure: function(errMsg) {
@@ -64,7 +64,7 @@ function getLatestTaskFromRestApi() {
                 if(result.text.length > 0) {
                     createTaskDiv_WithText(result.name, result.text, result.id);
                 } else {
-                    createTaskDiv(result.name);
+                    createTaskDiv(result.name, result.id);
                 }
             }
         },
@@ -128,7 +128,7 @@ function createTaskDiv_WithText(name, task, id) {
     let pText = document.createElement('p');
     pText.textContent = task;
 
-    //delelte listener
+    //delete task listener
     removeTaskDiv.addEventListener("click", function() {
         deleteTask(id, taskDiv);
     }, false);
@@ -150,10 +150,11 @@ function createTaskDiv_WithText(name, task, id) {
     taskDiv.appendChild(textBorderDiv);
 
     document.getElementById('all-tasks').prepend(taskDiv);
-
+    $(taskDiv).toggle(0);
+    $(taskDiv).toggle(200);
 }
 
-function createTaskDiv(name) {
+function createTaskDiv(name, id) {
     //<div class="task">
     let taskDiv = document.createElement('div');
     taskDiv.setAttribute('class', 'task');
@@ -172,7 +173,7 @@ function createTaskDiv(name) {
     removeTaskBorderDiv.setAttribute('class', 'remove-task-border');
 
     //<div class="remove-task">
-    let removeTaskDiv = document.createElement('div');
+    let removeTaskDiv = document.createElement('button');
     removeTaskDiv.setAttribute('class', 'remove-task');
 
     //<img src="/images/bin.png">
@@ -188,6 +189,10 @@ function createTaskDiv(name) {
     let pName = document.createElement('p');
     pName.textContent = name;
 
+    //delete task listener
+    removeTaskDiv.addEventListener("click", function() {
+        deleteTask(id, taskDiv);
+    }, false);
 
     //name
     namePDiv.appendChild(pName);
