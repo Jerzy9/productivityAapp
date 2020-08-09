@@ -42,7 +42,7 @@ function getDateFromRestApi() {
                  if(obj.text.length > 0) {
                     createTaskDiv_WithText(obj.name, obj.text);
                 } else {
-                    createTaskDiv(result.name);
+                    createTaskDiv(obj.name);
                 }
                     tasksList.push(obj);
              }
