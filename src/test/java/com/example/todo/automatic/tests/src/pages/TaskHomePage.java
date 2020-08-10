@@ -1,6 +1,7 @@
 package com.example.todo.automatic.tests.src.pages;
 
 import com.example.todo.automatic.tests.src.config.SeleniumConfig;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -33,7 +34,7 @@ public class TaskHomePage {
         config.waitDriver();
     }
 
-    public String getLatestTaskName() {
+    public String getLatestTaskName() throws NoSuchElementException {
         return latestTaskName.getText();
     }
     public String getLatestTaskText() {

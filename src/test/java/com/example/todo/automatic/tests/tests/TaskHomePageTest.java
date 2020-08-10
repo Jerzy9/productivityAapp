@@ -6,6 +6,8 @@ import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 
+import java.util.NoSuchElementException;
+
 
 //@RunWith(JUnit4.class)
 public class TaskHomePageTest {
@@ -63,6 +65,12 @@ public class TaskHomePageTest {
         }
 
         assertEquals(homePage.getLatestTaskName(), name);
-        assertEquals(homePage.getLatestTaskText(), "");
+       //assertThrows() error
+    }
+
+    @Test
+    public void givenTask_whenPressedBinTask_thenDeleteTask() {
+
+
     }
 }
