@@ -1,6 +1,7 @@
 package com.example.todo.automatic.tests.src.pages;
 
 import com.example.todo.automatic.tests.src.config.SeleniumConfig;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -22,6 +23,9 @@ public class TaskHomePage {
     private WebElement latestTaskName;
     @FindBy(xpath = "//*[@id=\"all-tasks\"]/div/div[2]/div/div/p")
     private WebElement latestTaskText;
+    @FindBy(xpath = "//*[@id=\"all-tasks\"]/div[1]/div[1]/div/div[2]/button")
+    private WebElement latestTaskBinBtn;
+
 
 
 
@@ -33,7 +37,7 @@ public class TaskHomePage {
         config.waitDriver();
     }
 
-    public String getLatestTaskName() {
+    public String getLatestTaskName() throws NoSuchElementException {
         return latestTaskName.getText();
     }
     public String getLatestTaskText() {
@@ -75,6 +79,16 @@ public class TaskHomePage {
     public void refreshData() {
         PageFactory.initElements(this.config.getDriver(), this);
         config.waitDriver();
+    }
+    public void clickOnLatestTaskBinBtn() {
+        config.clickElement(latestTaskBinBtn);
+        config.waitDriver();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException ex) {
+            ex.fillInStackTrace();
+        }
+        refreshData();
     }
 
 }
