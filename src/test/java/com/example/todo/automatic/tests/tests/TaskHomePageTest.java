@@ -7,12 +7,12 @@ import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.NoSuchElementException;
 
-
 //@RunWith(JUnit4.class)
 public class TaskHomePageTest {
 
     private static SeleniumConfig config = new SeleniumConfig();;
     private TaskHomePage homePage = new TaskHomePage(config);
+
     @BeforeClass
     public static void setup() {
         //doesn't work
@@ -52,7 +52,6 @@ public class TaskHomePageTest {
         } catch (InterruptedException ex) {
             ex.fillInStackTrace();
         }
-
         //is there taskName? yes
         assertEquals(homePage.getLatestTaskName(), name);
         //is there taskText? yes
