@@ -23,6 +23,9 @@ public class TaskHomePage {
     private WebElement latestTaskName;
     @FindBy(xpath = "//*[@id=\"all-tasks\"]/div/div[2]/div/div/p")
     private WebElement latestTaskText;
+    @FindBy(xpath = "//*[@id=\"all-tasks\"]/div[1]/div[1]/div/div[2]/button")
+    private WebElement latestTaskBinBtn;
+
 
 
 
@@ -76,6 +79,16 @@ public class TaskHomePage {
     public void refreshData() {
         PageFactory.initElements(this.config.getDriver(), this);
         config.waitDriver();
+    }
+    public void clickOnLatestTaskBinBtn() {
+        config.clickElement(latestTaskBinBtn);
+        config.waitDriver();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException ex) {
+            ex.fillInStackTrace();
+        }
+        refreshData();
     }
 
 }

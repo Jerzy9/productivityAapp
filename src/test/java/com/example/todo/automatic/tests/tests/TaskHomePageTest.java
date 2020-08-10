@@ -5,8 +5,7 @@ import com.example.todo.automatic.tests.src.pages.TaskHomePage;
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
-
-import java.util.NoSuchElementException;
+import org.openqa.selenium.NoSuchElementException;
 
 
 //@RunWith(JUnit4.class)
@@ -20,9 +19,19 @@ public class TaskHomePageTest {
         System.out.println("does work");
     }
 
+    private void openFormIfClosed() {
+        if(!homePage.isFormShown()) {
+            homePage.clickOnAddTask();
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            ex.fillInStackTrace();
+        }
+    }
     @Test
     public void givenAddTaskBtn_whenIsClicked_thenShowTaskForm() {
-        homePage.clickOnAddTask();
+        openFormIfClosed();
 
         assertTrue(homePage.isFormShown());
     }
@@ -32,9 +41,7 @@ public class TaskHomePageTest {
         String name = config.randomStringGenerator(10);
         String text = config.randomStringGenerator(32);
 
-        if(!homePage.isFormShown()) {
-            homePage.clickOnAddTask();
-        }
+        openFormIfClosed();
         homePage.addTask(name, text);
         homePage.clickOnAddTask();
 
@@ -52,9 +59,7 @@ public class TaskHomePageTest {
     public void givenTaskFrom_whenInsertOnlyNameAndSubmit_thenTaskAdded() {
         String name = config.randomStringGenerator(10);
 
-        if(!homePage.isFormShown()) {
-            homePage.clickOnAddTask();
-        }
+        openFormIfClosed();
         homePage.addTask(name, null);
         homePage.clickOnAddTask();
 
@@ -65,12 +70,54 @@ public class TaskHomePageTest {
         }
 
         assertEquals(homePage.getLatestTaskName(), name);
-       //assertThrows() error
+        try {
+            assertNull(homePage.getLatestTaskText());
+        } catch (NoSuchElementException ex) {
+            assertThrows(NoSuchElementException.class, () -> {
+                homePage.getLatestTaskText();
+            });
+        }
     }
 
     @Test
     public void givenTask_whenPressedBinTask_thenDeleteTask() {
+        String name = config.randomStringGenerator(10);
+        String text = config.randomStringGenerator(52);
 
+        openFormIfClosed();
 
+        homePage.addTask(name, text);
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException ex) {
+            ex.fillInStackTrace();
+        }
+
+        assertEquals(homePage.getLatestTaskName(), name);
+        assertEquals(homePage.getLatestTaskText(), text);
+
+        homePage.clickOnLatestTaskBinBtn();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ex) {
+            ex.fillInStackTrace();
+        }
+
+        try {
+            assertNotEquals(homePage.getLatestTaskName(), name);
+        } catch (NoSuchElementException ex) {
+            assertThrows(NoSuchElementException.class, () -> {
+                homePage.getLatestTaskName();
+            });
+        }
+
+        try {
+            assertNotEquals(homePage.getLatestTaskText(), text);
+        } catch (NoSuchElementException ex) {
+            assertThrows(NoSuchElementException.class, () -> {
+                homePage.getLatestTaskText();
+            });
+        }
     }
 }
