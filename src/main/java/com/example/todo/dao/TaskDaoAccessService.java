@@ -44,6 +44,7 @@ public class TaskDaoAccessService implements TaskDao {
 
     @Override
     public int deleteTask(UUID id) {
+        String sql;
         return 0;
     }
 
