@@ -1,6 +1,6 @@
 app:
   datasource:
-    jdbc-url: jdbc:postgresql://localhost:5433/tododb
+    jdbc-url: jdbc:postgresql://localhost:5433/todo
     username: postgres
     password: psswd
     pool-size: 30
