@@ -9,23 +9,26 @@ import java.util.Optional;
 import java.util.UUID;
 
 public class TaskDaoAccessService implements TaskDao {
-    private JdbcTemplate jdbc;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public TaskDaoAccessService(JdbcTemplate jdbc) {
-        this.jdbc = jdbc;
+    public TaskDaoAccessService(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
     public int insertTask(UUID id, Task newTask) {
-        return 0;
+        final String sql = "INSERT INTO task VALUES " + id + ", " + newTask.getName() + ", "+ newTask.getText();
+
+        jdbcTemplate.execute(sql);
+        return 1;
     }
 
     @Override
     public List<Task> getAllTasks() {
-        final String sql = "SELECT id, name, text FROM text;";
+        final String sql = "SELECT id, name, text FROM text";
 
-        return jdbc.query(sql, ((resultSet, i) -> {
+        return jdbcTemplate.query(sql, ((resultSet, i) -> {
             UUID id = UUID.fromString(resultSet.getString("id"));
             String name = resultSet.getString("name");
             String text = resultSet.getString("text");
