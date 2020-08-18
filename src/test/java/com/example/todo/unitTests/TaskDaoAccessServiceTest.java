@@ -21,12 +21,12 @@ public class TaskDaoAccessServiceTest {
     private TaskDaoAccessService dao;
 
     @Test
-    public void autowiredTest() {
+    public void daoAutowiredTest() {
         assertNotNull(dao);
     }
 
     @Test
-    public void whenGetAllTasks_thenReturnListOfAllTasks() {
+    public void getAllTasksTest() {
         List<Task> daoList = dao.getAllTasks();
 
         System.out.println(daoList.get(0).getId());
@@ -39,14 +39,14 @@ public class TaskDaoAccessServiceTest {
     }
 
     @Test
-    public void insertTest() {
+    public void insertTaskTest() {
         UUID id = UUID.randomUUID();
         Task task = new Task(id, "name", "test");
         assertEquals(1, dao.insertTask(UUID.randomUUID(),task));
     }
 
     @Test
-    public void whenGetTaskById_thenReturnTaskWithSameId() {
+    public void getTaskByIdTest() {
         UUID id = UUID.randomUUID();
         String name = "name";
         String text = "text";
@@ -58,5 +58,25 @@ public class TaskDaoAccessServiceTest {
         assertEquals(name, dao.selectTaskById(id).get().getName());
         assertEquals(text, dao.selectTaskById(id).get().getText());
     }
+
+    @Test
+    public void deleteTest() {
+        UUID id = UUID.randomUUID();
+        Task task = new Task(id, "name", "test");
+        assertEquals(1, dao.insertTask(UUID.randomUUID(),task));
+        assertEquals(1, dao.deleteTask(id));
+    }
+
+    @Test
+    public void getLastTaskTest() {
+        UUID id = UUID.randomUUID();
+        Task task = new Task(id, "name", "test");
+
+        assertEquals(1, dao.insertTask(UUID.randomUUID(),task));
+
+        assertEquals(id, dao.getLastTask().getId());
+    }
+
+
 
 }

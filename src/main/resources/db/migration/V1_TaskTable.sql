@@ -1,5 +1,0 @@
-CREATE TABLE tassk (
-    id UUID NOT NULL PRIMARY KEY,
-    name VARCHAR NOT NULL,
-    TEXT VARCHAR
-)

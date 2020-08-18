@@ -20,13 +20,13 @@ public class TaskDaoAccessService implements TaskDao {
 
     @Override
     public int insertTask(UUID id, Task newTask) {
-        final String sql = "INSERT INTO task (id, name, text) VALUES (?, ?, ?)";
+        final String sql = "INSERT INTO tasks (id, name, text) VALUES (?, ?, ?)";
         return jdbcTemplate.update(sql, id, newTask.getName(), newTask.getText());
     }
 
     @Override
     public List<Task> getAllTasks() {
-        final String sql = "SELECT id, name, text FROM task";
+        final String sql = "SELECT id, name, text FROM tasks";
 
         return jdbcTemplate.query(sql, ((resultSet, i) -> {
             UUID id = UUID.fromString(resultSet.getString("id"));
@@ -44,12 +44,20 @@ public class TaskDaoAccessService implements TaskDao {
 
     @Override
     public int deleteTask(UUID id) {
-        String sql;
-        return 0;
+        final String sql = "DELETE FROM tasks WHERE id='" + id + "'";
+        return jdbcTemplate.update(sql);
     }
 
     @Override
     public Task getLastTask() {
+        final String sql = "SELECT id, name, texts FROM task GROUP BY id DESC LIMIT";
+//        Task task = jdbcTemplate.query(sql, ((resultSet, i) -> {
+//            UUID id = UUID.fromString(resultSet.getString("id"));
+//            String name = resultSet.getString("name");
+//            String text = resultSet.getString("text");
+//
+//            return new Task(id, name, text);
+//        }));
         return null;
     }
 }
