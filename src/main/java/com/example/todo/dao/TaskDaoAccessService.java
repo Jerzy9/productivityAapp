@@ -46,6 +46,7 @@ public class TaskDaoAccessService implements TaskDao {
     public int deleteTask(UUID id) {
         final String sql = "DELETE FROM tasks WHERE id='" + id + "'";
         return jdbcTemplate.update(sql);
+        //
     }
 
     @Override
