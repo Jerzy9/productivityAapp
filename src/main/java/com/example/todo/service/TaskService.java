@@ -15,7 +15,7 @@ public class TaskService {
     private final TaskDao taskDao;
 
     @Autowired
-    public TaskService(@Qualifier("fake") TaskDao taskDao) {
+    public TaskService(@Qualifier("postgres") TaskDao taskDao) {
         this.taskDao = taskDao;
     }
 

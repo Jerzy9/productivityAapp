@@ -72,10 +72,9 @@ public class TaskDaoAccessServiceTest {
     public void getLastTaskTest() {
         UUID id = UUID.randomUUID();
         Task task = new Task(id, "name", "test");
-//        dao.insertTask(UUID.randomUUID(),task)
-//        assertEquals(1, );
-//
-//        assertEquals(id, dao.getLastTask().getId());
+
+        assertEquals(1, dao.insertTask(id,task));
+        assertEquals(id, dao.getLastTask().getId());
     }
 
 

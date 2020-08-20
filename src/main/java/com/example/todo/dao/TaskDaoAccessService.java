@@ -46,19 +46,19 @@ public class TaskDaoAccessService implements TaskDao {
     public int deleteTask(UUID id) {
         final String sql = "DELETE FROM tasks WHERE id='" + id + "'";
         return jdbcTemplate.update(sql);
-        //
     }
 
     @Override
     public Task getLastTask() {
-        final String sql = "SELECT id, name, texts FROM task GROUP BY id DESC LIMIT";
-//        Task task = jdbcTemplate.query(sql, ((resultSet, i) -> {
-//            UUID id = UUID.fromString(resultSet.getString("id"));
-//            String name = resultSet.getString("name");
-//            String text = resultSet.getString("text");
-//d
-//            return new Task(id, name, text);
-//        }));
-        return null;
+        final String sql = "SELECT id, name, text FROM tasks ORDER BY id_auto DESC LIMIT 1";
+        //SELECT * FROM tasks ORDER BY id_auto DESC LIMIT 1
+        List<Task> taskList = jdbcTemplate.query(sql, ((resultSet, i) -> {
+            UUID id = UUID.fromString(resultSet.getString("id"));
+            String name = resultSet.getString("name");
+            String text = resultSet.getString("text");
+
+            return new Task(id, name, text);
+        }));
+        return taskList.get(0);
     }
 }
