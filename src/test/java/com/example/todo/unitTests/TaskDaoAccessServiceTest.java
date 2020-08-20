@@ -63,7 +63,8 @@ public class TaskDaoAccessServiceTest {
     public void deleteTest() {
         UUID id = UUID.randomUUID();
         Task task = new Task(id, "name", "test");
-        assertEquals(1, dao.insertTask(UUID.randomUUID(),task));
+
+        assertEquals(1, dao.insertTask(id, task));
         assertEquals(1, dao.deleteTask(id));
     }
 
@@ -71,10 +72,10 @@ public class TaskDaoAccessServiceTest {
     public void getLastTaskTest() {
         UUID id = UUID.randomUUID();
         Task task = new Task(id, "name", "test");
-
-        assertEquals(1, dao.insertTask(UUID.randomUUID(),task));
-
-        assertEquals(id, dao.getLastTask().getId());
+//        dao.insertTask(UUID.randomUUID(),task)
+//        assertEquals(1, );
+//
+//        assertEquals(id, dao.getLastTask().getId());
     }
 
 
