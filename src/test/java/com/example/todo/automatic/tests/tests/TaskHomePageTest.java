@@ -45,10 +45,10 @@ public class TaskHomePageTest {
 
         openFormIfClosed();
         homePage.addTask(name, text);
-        homePage.clickOnAddTask();
+       // homePage.clickOnAddTask();
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         } catch (InterruptedException ex) {
             ex.fillInStackTrace();
         }
@@ -60,7 +60,7 @@ public class TaskHomePageTest {
 
     @Test
     public void givenTaskFrom_whenInsertOnlyNameAndSubmit_thenTaskAdded() {
-        //generate random name
+        //generate random dname
         String name = config.randomStringGenerator(10);
 
         openFormIfClosed();
@@ -126,5 +126,11 @@ public class TaskHomePageTest {
                 homePage.getLatestTaskText();
             });
         }
+    }
+
+    @Test
+    public void addHundredTasks() {
+        for (int i = 0; i < 100; i++)
+            givenTaskFrom_whenInsertNameTextAndSubmit_thenTaskAdded();
     }
 }
