@@ -60,7 +60,7 @@ public class TaskHomePageTest {
 
     @Test
     public void givenTaskFrom_whenInsertOnlyNameAndSubmit_thenTaskAdded() {
-        //generate random dname
+        //generate random name
         String name = config.randomStringGenerator(10);
 
         openFormIfClosed();
