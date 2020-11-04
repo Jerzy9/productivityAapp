@@ -8,8 +8,10 @@ I hope it gives me a lot of new knowlage and understanding of connecting fronten
 Back-end:
 - Spring boot
 - Java 11
+
 Database 
 - Postgres SQL
+
 Front-end
 - HTML
 - CSS
